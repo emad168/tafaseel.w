@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Grand Collection | TAFASEEL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,48 +12,92 @@
             --glass: rgba(255, 255, 255, 0.03);
         }
 
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background-color: var(--dark-bg);
-            margin: 0;
-            padding: 20px;
+            padding-bottom: 80px; /* مساحة للشريط السفلي */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
+            overflow-x: hidden;
         }
+
+        /* شريط التنقل للاب توب */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(166, 139, 90, 0.3);
+            height: 70px;
+        }
+
+        .logo h2 { font-size: 24px; color: var(--gold); letter-spacing: 2px; font-weight: 800; }
+        
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: white; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        nav ul li a:hover, .active-link { color: var(--gold) !important; opacity: 1; }
+
+        /* شريط الموبايل السفلي */
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            border-top: 1px solid var(--gold);
+            padding: 12px 0;
+            justify-content: space-around;
+            z-index: 2000;
+        }
+
+        .mobile-bar a { color: white; text-decoration: none; font-size: 18px; display: flex; flex-direction: column; align-items: center; }
+        .mobile-bar a span { font-size: 9px; margin-top: 4px; }
+        .mobile-bar a.active { color: var(--gold); }
 
         .gallery-container {
             max-width: 1400px;
-            margin: 40px auto;
+            margin: 100px auto 20px;
             background: var(--glass);
-            padding: 40px;
+            padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(166, 139, 90, 0.1);
             backdrop-filter: blur(15px);
+            animation: fadeInUp 0.8s ease;
         }
 
-        .gallery-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .gallery-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            letter-spacing: 5px;
-            color: var(--gold);
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .sub-title {
-            color: #888;
-            margin-top: 15px;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
+        .gallery-header { text-align: center; margin-bottom: 40px; }
+        .gallery-title { font-size: clamp(1.8rem, 5vw, 3.5rem); color: var(--gold); margin: 0; }
+        .sub-title { color: #888; margin-top: 10px; font-size: 0.9rem; }
 
         .designs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr); /* موبايل */
+            gap: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .designs-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         }
 
         .design-card {
@@ -65,32 +109,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
             text-decoration: none;
+            transition: 0.3s;
         }
 
-        .design-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.8s ease;
-        }
-
-        .design-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(166, 139, 90, 0.2);
-        }
-
-        .design-card:hover img {
-            transform: scale(1.1);
-            filter: brightness(0.3) saturate(1.2);
-        }
+        .design-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .design-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .design-card:hover img { transform: scale(1.1); filter: brightness(0.4); }
 
         .overlay-info {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
             opacity: 0;
@@ -98,63 +128,67 @@
             width: 100%;
         }
 
-        .design-card:hover .overlay-info {
-            opacity: 1;
-        }
+        .design-card:hover .overlay-info { opacity: 1; }
 
         .inquiry-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            background: var(--gold);
+            color: black;
+            padding: 8px 15px;
+            font-size: 0.7rem;
             font-weight: bold;
+            border-radius: 4px;
         }
 
-        .product-id {
-            display: block;
-            margin-top: 10px;
-            font-size: 0.7rem;
-            color: #fff;
-            opacity: 0.6;
-        }
+        .product-id { display: block; margin-top: 5px; font-size: 0.6rem; color: #fff; opacity: 0.7; }
 
         .action-area {
-            text-align: center;
-            margin-top: 80px;
-            padding: 40px;
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .btn-instagram {
             color: var(--gold);
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: bold;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            letter-spacing: 2px;
         }
 
-        .btn-instagram:hover {
-            color: white;
-            text-shadow: 0 0 10px var(--gold);
-        }
+        footer { text-align: center; padding: 20px 0 120px; }
 
-        @media (max-width: 600px) {
-            .designs-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .gallery-container { padding: 15px; }
-            .gallery-title { font-size: 1.5rem; }
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* إخفاء القائمة المزدحمة في الموبايل */
+            nav { justify-content: center; height: 60px; }
+            .mobile-bar { display: flex; }
+            .gallery-container { margin-top: 70px; padding: 15px; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="logo"><h2>TAFASEEL</h2></div>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Shop.html" class="active-link">Shop</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="mobile-bar">
+        <a href="Home.html"><i class="fas fa-home"></i><span>الرئيسية</span></a>
+        <a href="Shop.html" class="active"><i class="fas fa-shopping-bag"></i><span>المتجر</span></a>
+        <a href="About.html"><i class="fas fa-info-circle"></i><span>عنّا</span></a>
+        <a href="Contact.html"><i class="fas fa-envelope"></i><span>تواصل</span></a>
+    </div>
+
     <section class="gallery-container">
         <header class="gallery-header">
             <h2 class="gallery-title">The Collection</h2>
-            <p class="sub-title">إضغط على التصميم للاستفسار عبر واتساب مع عماد حمدي</p>
+            <p class="sub-title">إضغط على التصميم للاستفسار عبر واتساب</p>
         </header>
         
         <div class="designs-grid">
@@ -467,6 +501,10 @@
             </a>
         </div>
     </section>
+
+    <footer>
+        <p style="font-size: 10px; color: #888;">© 2026 TAFASEEL | Crafted by Emad Hamdy</p>
+    </footer>
 
 </body>
 </html>

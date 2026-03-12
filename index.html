@@ -1,76 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TAFASEEL | Luxury Handcrafted Decor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --gold: #a68b5a;
-            --dark-overlay: rgba(0, 0, 0, 0.7);
+            --dark-overlay: rgba(0, 0, 0, 0.75);
             --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        @keyframes heroReveal {
-            from { clip-path: inset(0 50% 0 50%); opacity: 0; }
-            to { clip-path: inset(0 0 0 0); opacity: 1; }
-        }
-
-        @keyframes textSlideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            /* إضافة الخلفية للصفحة بالكامل */
             background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), 
                         url('WhatsApp Image 2026-01-24 at 4.47.21 PM.jpeg') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* شريط التنقل الملكي */
+        /* شريط التنقل المحسن */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 8%;
+            padding: 15px 5%;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(166, 139, 90, 0.3);
         }
 
         .logo h2 {
-            font-size: 28px;
+            font-size: 20px;
             color: var(--gold);
-            letter-spacing: 5px;
+            letter-spacing: 2px;
             font-weight: 800;
-            text-shadow: 0 0 15px rgba(166, 139, 90, 0.3);
         }
 
-        nav ul { display: flex; list-style: none; gap: 40px; }
+        /* القائمة العادية (تظهر في الكمبيوتر وتختفي في الموبايل) */
+        nav ul { display: flex; list-style: none; gap: 20px; }
         nav ul li a {
             text-decoration: none;
             color: white;
             font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.4s;
-            opacity: 0.7;
+            transition: 0.3s;
+            opacity: 0.8;
         }
-
         nav ul li a:hover, .active { opacity: 1; color: var(--gold); }
 
-        /* القسم الرئيسي */
+        /* القسم الرئيسي - Hero */
         .hero-section {
             height: 100vh;
             display: flex;
@@ -78,117 +67,97 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 5%;
-            animation: heroReveal 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 0 15px;
         }
 
         .hero-tagline {
-            font-size: 14px;
-            letter-spacing: 8px;
+            font-size: clamp(10px, 4vw, 14px);
+            letter-spacing: 4px;
             color: var(--gold);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            animation: textSlideUp 1s ease 0.5s both;
         }
 
         .hero-section h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 1;
+            font-size: clamp(2rem, 12vw, 5rem);
+            line-height: 1.2;
             margin-bottom: 30px;
-            font-weight: 800;
-            letter-spacing: -2px;
-            animation: textSlideUp 1s ease 0.7s both;
+            font-weight: 900;
         }
 
-        /* زر الأكشن */
         .cta-btn {
-            padding: 18px 45px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: white;
+            padding: 15px 40px;
+            background: var(--gold);
+            color: black;
             font-size: 12px;
             font-weight: bold;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            transition: 0.5s;
-            animation: textSlideUp 1s ease 0.9s both;
+            border-radius: 5px;
+            transition: 0.4s;
         }
 
-        .cta-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: var(--gold);
-            transition: 0.5s;
-            z-index: -1;
-        }
-
-        .cta-btn:hover::before { left: 0; }
-        .cta-btn:hover { color: black; box-shadow: 0 0 30px rgba(166, 139, 90, 0.4); }
-
-        /* قسم المميزات */
+        /* شبكة المميزات للموبايل */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr; /* عمود واحد للموبايل */
             gap: 20px;
-            padding: 100px 8%;
-            /* جعل الشبكة شفافة لتظهر الخلفية من ورائها */
-            background: transparent;
+            padding: 40px 5%;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .feature-item {
             background: var(--glass);
-            backdrop-filter: blur(5px);
-            padding: 60px 40px;
+            padding: 30px;
             border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.5s;
-            cursor: pointer;
+            border-radius: 10px;
+            text-align: center;
         }
 
-        .feature-item:hover {
-            background: rgba(166, 139, 90, 0.15);
-            border-color: var(--gold);
-            transform: translateY(-10px);
+        .feature-item i { font-size: 24px; color: var(--gold); margin-bottom: 15px; }
+        .feature-item h3 { font-size: 18px; margin-bottom: 10px; }
+        .feature-item p { font-size: 14px; color: #ccc; }
+
+        /* قائمة الموبايل السفلية - الحل الأضمن للتنقل */
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            border-top: 1px solid var(--gold);
+            padding: 12px 0;
+            justify-content: space-around;
+            z-index: 2000;
         }
 
-        .feature-item i {
-            font-size: 30px;
-            color: var(--gold);
-            margin-bottom: 25px;
-            display: block;
+        .mobile-bar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .feature-item h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-        }
-
-        .feature-item p {
-            font-size: 14px;
-            color: #ddd;
-            line-height: 1.6;
-        }
+        .mobile-bar a span { font-size: 9px; margin-top: 4px; text-transform: uppercase; }
+        .mobile-bar a.active { color: var(--gold); }
 
         footer {
-            padding: 60px 8%;
+            padding: 50px 5% 100px 5%;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0,0,0,0.8);
         }
 
-        .social-icons { margin-bottom: 30px; display: flex; justify-content: center; gap: 30px; }
-        .social-icons a { color: white; font-size: 20px; transition: 0.3s; opacity: 0.6; }
-        .social-icons a:hover { opacity: 1; color: var(--gold); }
-
-        .copy { font-size: 11px; letter-spacing: 2px; color: #888; text-transform: uppercase; }
-
+        /* تعديلات شاشات الموبايل */
         @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero-section h1 { font-size: 3.5rem; }
+            nav ul { display: none; } /* نخفي القائمة العلوية عشان متبوظش الشكل */
+            .mobile-bar { display: flex; } /* نظهر شريط التنقل السفلي */
+            .hero-section h1 { font-size: 2.5rem; }
+            .logo { width: 100%; text-align: center; } /* سنترة اللوجو في الموبايل */
         }
     </style>
 </head>
@@ -205,10 +174,17 @@
         </ul>
     </nav>
 
+    <div class="mobile-bar">
+        <a href="Home.html" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="Shop.html"><i class="fas fa-shopping-bag"></i><span>Shop</span></a>
+        <a href="About.html"><i class="fas fa-info-circle"></i><span>About</span></a>
+        <a href="Contact.html"><i class="fas fa-envelope"></i><span>Contact</span></a>
+    </div>
+
     <section class="hero-section">
         <p class="hero-tagline">Exclusively Handcrafted</p>
-        <h1>DESIGNING<br>THE EXTRAORDINARY</h1>
-        <a href="Shop.html" class="cta-btn">EXPLORE DESINGES</a>
+        <h1>DESIGNING THE<br>EXTRAORDINARY</h1>
+        <a href="Shop.html" class="cta-btn">EXPLORE DESIGNS</a>
     </section>
 
     <div class="features-grid">
@@ -220,22 +196,21 @@
         <div class="feature-item">
             <i class="fas fa-crown"></i>
             <h3>ROYAL QUALITY</h3>
-            <p>نستخدم أرقى الخامات اليدوية لضمان جودة تدوم طويلاً، لأنك تستحق الأفضل دائماً.</p>
+            <p>نستخدم أرقى الخامات اليدوية لضمان جودة تدوم طويلاً.</p>
         </div>
         <div class="feature-item">
             <i class="fas fa-shipping-fast"></i>
             <h3>PREMIUM CARE</h3>
-            <p>خدمة استشارية وتوصيل يضمن وصول تحفتك الفنية بأمان تام إلى باب منزلك.</p>
+            <p>خدمة استشارية وتوصيل يضمن وصول تحفتك الفنية بأمان تام.</p>
         </div>
     </div>
 
     <footer>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/tafaseel.6862792?igsh=MWdyamZjdmViazZvcA==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1Fq7W9HJzy/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/201279150169" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 20px;">
+            <a href="https://www.instagram.com/tafaseel.6862792" target="_blank" style="color: white;"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/201279150169" target="_blank" style="color: white;"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p class="copy">© 2026 TAFASEEL | Crafted by Emad Hamdy</p>
+        <p style="font-size: 10px; color: #888;">© 2026 TAFASEEL | Crafted by Emad Hamdy</p>
     </footer>
 
 </body>
