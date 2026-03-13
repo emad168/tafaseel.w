@@ -21,13 +21,12 @@
 
         body {
             background-color: var(--dark-bg);
-            padding-bottom: 80px; /* مساحة للشريط السفلي */
+            padding-bottom: 80px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
             overflow-x: hidden;
         }
 
-        /* شريط التنقل للاب توب */
         nav {
             display: flex;
             justify-content: space-between;
@@ -57,7 +56,6 @@
         }
         nav ul li a:hover, .active-link { color: var(--gold) !important; opacity: 1; }
 
-        /* شريط الموبايل السفلي */
         .mobile-bar {
             display: none;
             position: fixed;
@@ -90,9 +88,10 @@
         .gallery-title { font-size: clamp(1.8rem, 5vw, 3.5rem); color: var(--gold); margin: 0; }
         .sub-title { color: #888; margin-top: 10px; font-size: 0.9rem; }
 
+        /* تعديل الـ grid عشان يشتغل مع الـ JavaScript */
         .designs-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* موبايل */
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
 
@@ -141,29 +140,37 @@
 
         .product-id { display: block; margin-top: 5px; font-size: 0.6rem; color: #fff; opacity: 0.7; }
 
-        .action-area {
-            display: flex;
-            justify-content: center;
-            padding: 40px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-instagram {
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        footer { text-align: center; padding: 20px 0 120px; }
-
         @media (max-width: 768px) {
-            nav ul { display: none; } /* إخفاء القائمة المزدحمة في الموبايل */
+            nav ul { display: none; }
             nav { justify-content: center; height: 60px; }
             .mobile-bar { display: flex; }
             .gallery-container { margin-top: 70px; padding: 15px; }
         }
+        footer {
+    text-align: center; /* بيخلي كل الكلام في النص */
+    padding: 40px 0 120px; /* مسافة من فوق ومن تحت عشان شريط الموبايل */
+    width: 100%;
+    border-top: 1px solid rgba(166, 139, 90, 0.1);
+    margin-top: 50px;
+}
+
+.btn-instagram {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.copyright-text {
+    color: #888;
+    font-size: 0.8rem;
+    display: block;
+    letter-spacing: 1px;
+}
     </style>
 </head>
 <body>
@@ -174,6 +181,8 @@
             <li><a href="Home.html">Home</a></li>
             <li><a href="Shop.html" class="active-link">Shop</a></li>
             <li><a href="About.html">About</a></li>
+            <li><a href="Big.html">Blog</a></li>
+
             <li><a href="Contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -182,6 +191,7 @@
         <a href="Home.html"><i class="fas fa-home"></i><span>الرئيسية</span></a>
         <a href="Shop.html" class="active"><i class="fas fa-shopping-bag"></i><span>المتجر</span></a>
         <a href="About.html"><i class="fas fa-info-circle"></i><span>عنّا</span></a>
+         <a href="Big.html"><i class="fas fa-newspaper"></i><span>مدونة</span></a> 
         <a href="Contact.html"><i class="fas fa-envelope"></i><span>تواصل</span></a>
     </div>
 
@@ -190,321 +200,37 @@
             <h2 class="gallery-title">The Collection</h2>
             <p class="sub-title">إضغط على التصميم للاستفسار عبر واتساب</p>
         </header>
-        
-        <div class="designs-grid">
-            
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 1" target="_blank" class="design-card">
-                <img src="PIC/p1.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #01</span></div>
-            </a>
 
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 2" target="_blank" class="design-card">
-                <img src="all-pic3/p1.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #02</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 3" target="_blank" class="design-card">
-                <img src="all-pic3/p3.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #03</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 4" target="_blank" class="design-card">
-                <img src="all-pic3/P4.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #04</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 5" target="_blank" class="design-card">
-                <img src="all-pic3/P5.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #05</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 6" target="_blank" class="design-card">
-                <img src="all-pic3/P6.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #06</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 7" target="_blank" class="design-card">
-                <img src="all-pic3/P7.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #07</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 8" target="_blank" class="design-card">
-                <img src="all-pic3/P8.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #08</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 9" target="_blank" class="design-card">
-                <img src="all-pic3/P9.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #09</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 10" target="_blank" class="design-card">
-                <img src="all-pic3/P10.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #10</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 11" target="_blank" class="design-card">
-                <img src="all-pic3/P11.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #11</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 12" target="_blank" class="design-card">
-                <img src="all-pic3/P12.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #12</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 13" target="_blank" class="design-card">
-                <img src="all-pic3/P13.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #13</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 14" target="_blank" class="design-card">
-                <img src="all-pic3/P14.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #14</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 15" target="_blank" class="design-card">
-                <img src="all-pic3/P15.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #15</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 16" target="_blank" class="design-card">
-                <img src="all-pic3/P16.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #16</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 17" target="_blank" class="design-card">
-                <img src="all-pic3/P17.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #17</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 18" target="_blank" class="design-card">
-                <img src="all-pic3/P18.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #18</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 19" target="_blank" class="design-card">
-                <img src="all-pic3/P19.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #19</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 20" target="_blank" class="design-card">
-                <img src="all-pic3/P20.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #20</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 21" target="_blank" class="design-card">
-                <img src="all-pic3/P21.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #21</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 22" target="_blank" class="design-card">
-                <img src="all-pic3/P22.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #22</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 23" target="_blank" class="design-card">
-                <img src="all-pic3/P23.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #23</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 24" target="_blank" class="design-card">
-                <img src="all-pic3/P25.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #24</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 25" target="_blank" class="design-card">
-                <img src="all-pic3/P26.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #25</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 26" target="_blank" class="design-card">
-                <img src="all-pic3/P27.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #26</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 27" target="_blank" class="design-card">
-                <img src="all-pic3/P28.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #27</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 28" target="_blank" class="design-card">
-                <img src="all-pic3/P29.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #28</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 29" target="_blank" class="design-card">
-                <img src="all-pic3/P30.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #29</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 30" target="_blank" class="design-card">
-                <img src="all-pic3/P31.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #30</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 31" target="_blank" class="design-card">
-                <img src="all-pic3/P37.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #31</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 32" target="_blank" class="design-card">
-                <img src="all-pic3/P38.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #32</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 33" target="_blank" class="design-card">
-                <img src="all-pic3/P39.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #33</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 34" target="_blank" class="design-card">
-                <img src="all-pic3/P40.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #34</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 35" target="_blank" class="design-card">
-                <img src="all-pic3/P45.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #35</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 36" target="_blank" class="design-card">
-                <img src="all-pic3/P46.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #36</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 37" target="_blank" class="design-card">
-                <img src="all-pic3/P48.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #37</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 38" target="_blank" class="design-card">
-                <img src="all-pic3/P50.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #38</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 39" target="_blank" class="design-card">
-                <img src="all-pic3/P51.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #39</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 40" target="_blank" class="design-card">
-                <img src="all-pic3/P52.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #40</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 41" target="_blank" class="design-card">
-                <img src="all-pic3/P53.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #41</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 42" target="_blank" class="design-card">
-                <img src="all-pic3/P55.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #42</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 43" target="_blank" class="design-card">
-                <img src="all-pic3/P54.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #43</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 44" target="_blank" class="design-card">
-                <img src="all-pic3/P58.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #44</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 45" target="_blank" class="design-card">
-                <img src="all-pic3/P60.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #45</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 46" target="_blank" class="design-card">
-                <img src="all-pic3/P61.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #46</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 47" target="_blank" class="design-card">
-                <img src="all-pic3/P62.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #47</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 48" target="_blank" class="design-card">
-                <img src="all-pic3/P63.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #48</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 49" target="_blank" class="design-card">
-                <img src="all-pic3/P65.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #49</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 50" target="_blank" class="design-card">
-                <img src="all-pic3/P67.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #50</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 51" target="_blank" class="design-card">
-                <img src="all-pic3/P68.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #51</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 52" target="_blank" class="design-card">
-                <img src="all-pic3/P69.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #52</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 53" target="_blank" class="design-card">
-                <img src="all-pic3/P70.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #53</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 54" target="_blank" class="design-card">
-                <img src="all-pic3/P71.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #54</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 55" target="_blank" class="design-card">
-                <img src="all-pic3/P72.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #55</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 56" target="_blank" class="design-card">
-                <img src="PIC2/WhatsApp Image 2026-01-29 at 2.18.48 PM (4).jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #56</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 57" target="_blank" class="design-card">
-                <img src="all-pic3/P71.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #57</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 58" target="_blank" class="design-card">
-                <img src="all-pic3/P70.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #58</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 59" target="_blank" class="design-card">
-                <img src="all-pic3/P75.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #59</span></div>
-            </a>
-
-            <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number 60" target="_blank" class="design-card">
-                <img src="all-pic3/P76.jpeg" alt="Design" loading="lazy">
-                <div class="overlay-info"><span class="inquiry-btn">استفسر الآن</span><span class="product-id">Piece #60</span></div>
-            </a>
-
-        </div>
-
-        <div class="action-area">
-            <a href="https://www.instagram.com/tafaseel.6862792" target="_blank" class="btn-instagram">
-                <i class="fab fa-instagram"></i> FOLLOW TAFASEEL
-            </a>
-        </div>
+        <div class="designs-grid" id="main-gallery"></div>
     </section>
 
-    <footer>
-        <p style="font-size: 10px; color: #888;">© 2026 TAFASEEL | Crafted by Emad Hamdy</p>
-    </footer>
+    <script>
+        const gallery = document.getElementById('main-gallery');
+        let cards = '';
 
+    for (let i = 1; i < 89; i++) {
+    // تم توحيد المسار لجميع الصور لتبدأ من P1.jpeg إلى P91.jpeg
+    let imgSrc = `all-pic3/P${i}.jpeg`;
+
+    cards += `
+        <a href="https://wa.me/201279150169?text=Hello Mr. Emad, I want the price of product number ${i}" target="_blank" class="design-card">
+            <img src="${imgSrc}" alt="Design ${i}" loading="lazy">
+            <div class="overlay-info">
+                <span class="inquiry-btn">استفسر الآن</span>
+                <span class="product-id">Piece #${i.toString().padStart(2, '0')}</span>
+            </div>
+        </a>
+    `;
+}
+
+        gallery.innerHTML = cards;
+    </script>
+<footer>
+    <a href="https://www.instagram.com/tafaseel_art" target="_blank" class="btn-instagram">
+        FOLLOW TAFASEEL 
+    </a>
+    <span class="copyright-text">
+        TAFASEEL | Crafted by Emad Hamdy 2026 
+</footer>
 </body>
 </html>
